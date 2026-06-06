@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "giamatravel",
+	"version": "${version}",
+	"name": "Giamatravel",
+	"description": "A transportation overhaul: upgraded horses, boats and minecarts.",
+	"authors": [
+		"Giamat13"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/giamatravel/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.giamatravel.Giamatravel"
+		],
+		"client": [
+			"com.giamatravel.client.GiamatravelClient"
+		]
+	},
+	"mixins": [
+		"giamatravel.mixins.json",
+		{
+			"config": "giamatravel.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"blocky13": "*"
+	}
+}

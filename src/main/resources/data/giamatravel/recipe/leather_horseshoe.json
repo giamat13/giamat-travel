@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "minecraft:leather"
+  },
+  "pattern": [
+    "M M",
+    " M "
+  ],
+  "result": {
+    "id": "giamatravel:leather_horseshoe",
+    "count": 1
+  }
+}

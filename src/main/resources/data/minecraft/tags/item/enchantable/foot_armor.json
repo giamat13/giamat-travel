@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "giamatravel:leather_horseshoe",
+    "giamatravel:iron_horseshoe",
+    "giamatravel:gold_horseshoe",
+    "giamatravel:diamond_horseshoe",
+    "giamatravel:netherite_horseshoe"
+  ]
+}

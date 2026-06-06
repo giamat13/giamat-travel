@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "minecraft:netherite_ingot"
+  },
+  "pattern": [
+    "M M",
+    " M "
+  ],
+  "result": {
+    "id": "giamatravel:netherite_horseshoe",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.giamatravel.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"HorseRenderStateMixin",
+		"HorseRendererMixin",
+		"LivingEntityRendererInvoker"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

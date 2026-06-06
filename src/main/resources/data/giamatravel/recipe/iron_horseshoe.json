@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "M": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "M M",
+    " M "
+  ],
+  "result": {
+    "id": "giamatravel:iron_horseshoe",
+    "count": 1
+  }
+}
