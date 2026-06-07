@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:birch_boat",
+    "minecraft:birch_boat",
+    "minecraft:birch_boat",
+    "minecraft:birch_boat",
+    "minecraft:birch_boat",
+    "minecraft:birch_boat"
+  ],
+  "result": {
+    "id": "minecraft:birch_boat",
+    "count": 1,
+    "components": {
+      "giamatravel:boat_size": 6
+    }
+  }
+}

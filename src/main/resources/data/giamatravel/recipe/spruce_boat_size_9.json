@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat",
+    "minecraft:spruce_boat"
+  ],
+  "result": {
+    "id": "minecraft:spruce_boat",
+    "count": 1,
+    "components": {
+      "giamatravel:boat_size": 9
+    }
+  }
+}

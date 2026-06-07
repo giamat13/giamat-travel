@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:acacia_boat",
+    "minecraft:acacia_boat",
+    "minecraft:acacia_boat",
+    "minecraft:acacia_boat",
+    "minecraft:acacia_boat"
+  ],
+  "result": {
+    "id": "minecraft:acacia_boat",
+    "count": 1,
+    "components": {
+      "giamatravel:boat_size": 5
+    }
+  }
+}

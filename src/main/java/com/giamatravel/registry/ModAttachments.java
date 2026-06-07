@@ -38,6 +38,23 @@ public final class ModAttachments {
 					.copyOnDeath()
 					.syncWith(ItemStack.STREAM_CODEC, AttachmentSyncPredicate.all()));
 
+	/** The size (1-9) of a boat entity. Synced so the client can scale the model. */
+	public static final AttachmentType<Integer> BOAT_SIZE = AttachmentRegistry.create(
+			Identifier.fromNamespaceAndPath(Giamatravel.MOD_ID, "boat_size"),
+			builder -> builder
+					.persistent(com.mojang.serialization.Codec.intRange(1, 9))
+					.initializer(() -> 1)
+					.syncWith(net.minecraft.network.codec.ByteBufCodecs.VAR_INT, AttachmentSyncPredicate.all()));
+
+	/** Banners draped on a boat (more banners = faster). Synced for rendering. */
+	public static final AttachmentType<java.util.List<ItemStack>> BOAT_BANNERS = AttachmentRegistry.create(
+			Identifier.fromNamespaceAndPath(Giamatravel.MOD_ID, "boat_banners"),
+			builder -> builder
+					.persistent(ItemStack.CODEC.listOf())
+					.initializer(java.util.ArrayList::new)
+					.copyOnDeath()
+					.syncWith(ItemStack.OPTIONAL_LIST_STREAM_CODEC, AttachmentSyncPredicate.all()));
+
 	private ModAttachments() {
 	}
 

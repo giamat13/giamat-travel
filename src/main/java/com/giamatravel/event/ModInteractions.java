@@ -29,6 +29,10 @@ public final class ModInteractions {
 		// Right-click a horse: equip a horseshoe, or bind a goat horn to it.
 		UseEntityCallback.EVENT.register((player, level, hand, entity, hitResult) -> {
 			ItemStack stack = player.getItemInHand(hand);
+			if (entity instanceof net.minecraft.world.entity.vehicle.boat.AbstractBoat boat
+					&& stack.getItem() instanceof net.minecraft.world.item.BannerItem) {
+				return addBoatBanner(player, boat, stack);
+			}
 			if (!(entity instanceof AbstractHorse horse)) {
 				return InteractionResult.PASS;
 			}
@@ -100,6 +104,25 @@ public final class ModInteractions {
 			stack.shrink(1);
 		}
 		horse.level().playSound(null, horse.blockPosition(), SoundEvents.ARMOR_EQUIP_ELYTRA.value(), SoundSource.NEUTRAL, 0.8F, 1.0F);
+		return InteractionResult.SUCCESS;
+	}
+
+	private static InteractionResult addBoatBanner(Player player, net.minecraft.world.entity.vehicle.boat.AbstractBoat boat, ItemStack stack) {
+		if (boat.level().isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+		AttachmentTarget target = (AttachmentTarget) boat;
+		int capacity = target.getAttachedOrElse(ModAttachments.BOAT_SIZE, 1);
+		java.util.List<ItemStack> banners = new java.util.ArrayList<>(target.getAttachedOrElse(ModAttachments.BOAT_BANNERS, java.util.List.of()));
+		if (banners.size() >= capacity) {
+			return InteractionResult.PASS;
+		}
+		banners.add(stack.copyWithCount(1));
+		target.setAttached(ModAttachments.BOAT_BANNERS, banners);
+		if (!player.getAbilities().instabuild) {
+			stack.shrink(1);
+		}
+		boat.level().playSound(null, boat.blockPosition(), SoundEvents.WOOL_PLACE, SoundSource.NEUTRAL, 0.8F, 1.0F);
 		return InteractionResult.SUCCESS;
 	}
 

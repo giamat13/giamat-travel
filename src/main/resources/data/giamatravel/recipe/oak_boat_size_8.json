@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat",
+    "minecraft:oak_boat"
+  ],
+  "result": {
+    "id": "minecraft:oak_boat",
+    "count": 1,
+    "components": {
+      "giamatravel:boat_size": 8
+    }
+  }
+}

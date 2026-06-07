@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bamboo_raft",
+    "minecraft:bamboo_raft",
+    "minecraft:bamboo_raft"
+  ],
+  "result": {
+    "id": "minecraft:bamboo_raft",
+    "count": 1,
+    "components": {
+      "giamatravel:boat_size": 3
+    }
+  }
+}
