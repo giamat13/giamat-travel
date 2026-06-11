@@ -41,6 +41,11 @@ public final class ModItems {
 		return Collections.unmodifiableList(CREATIVE_ITEMS);
 	}
 
+	/** Adds an item (e.g. a block item registered elsewhere) to the creative tab. */
+	public static void addCreativeItem(Item item) {
+		CREATIVE_ITEMS.add(item);
+	}
+
 	@SuppressWarnings("unchecked")
 	private static <T extends Item> T register(String name, Function<Item.Properties, T> factory) {
 		ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Giamatravel.MOD_ID, name));

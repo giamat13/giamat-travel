@@ -55,6 +55,17 @@ public final class ModAttachments {
 					.copyOnDeath()
 					.syncWith(ItemStack.OPTIONAL_LIST_STREAM_CODEC, AttachmentSyncPredicate.all()));
 
+	/** The UUID of the minecart this one is chained to and follows. */
+	public static final AttachmentType<java.util.UUID> COUPLED_TO = AttachmentRegistry.create(
+			Identifier.fromNamespaceAndPath(Giamatravel.MOD_ID, "coupled_to"),
+			builder -> builder
+					.persistent(net.minecraft.core.UUIDUtil.CODEC)
+					.syncWith(net.minecraft.core.UUIDUtil.STREAM_CODEC, AttachmentSyncPredicate.all()));
+
+	/** The minecart a player has selected as the first half of a coupling (transient). */
+	public static final AttachmentType<java.util.UUID> PENDING_COUPLE = AttachmentRegistry.create(
+			Identifier.fromNamespaceAndPath(Giamatravel.MOD_ID, "pending_couple"));
+
 	private ModAttachments() {
 	}
 

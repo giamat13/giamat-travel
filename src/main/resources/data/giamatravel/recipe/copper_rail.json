@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:copper_ingot",
+    "R": "minecraft:redstone",
+    "#": "minecraft:stick"
+  },
+  "pattern": [
+    "X X",
+    "X#X",
+    "XRX"
+  ],
+  "result": {
+    "id": "giamatravel:copper_rail",
+    "count": 16
+  }
+}

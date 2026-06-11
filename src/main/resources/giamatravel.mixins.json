@@ -5,8 +5,10 @@
 	"mixins": [
 		"AbstractBoatMixin",
 		"AbstractHorseMixin",
+		"AbstractMinecartMixin",
 		"BoatItemMixin",
-		"LeavesCollisionMixin"
+		"LeavesCollisionMixin",
+		"MinecartFurnaceMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

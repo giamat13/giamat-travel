@@ -29,6 +29,14 @@ public final class ModInteractions {
 		// Right-click a horse: equip a horseshoe, or bind a goat horn to it.
 		UseEntityCallback.EVENT.register((player, level, hand, entity, hitResult) -> {
 			ItemStack stack = player.getItemInHand(hand);
+			if (entity instanceof net.minecraft.world.entity.vehicle.minecart.AbstractMinecart cart) {
+				if (com.giamatravel.compat.ChainItems.isChain(stack)) {
+					return coupleMinecart(player, cart, stack);
+				}
+				if (stack.getItem() instanceof net.minecraft.world.item.BannerItem) {
+					return addCartBanner(player, cart, stack);
+				}
+			}
 			if (entity instanceof net.minecraft.world.entity.vehicle.boat.AbstractBoat boat
 					&& stack.getItem() instanceof net.minecraft.world.item.BannerItem) {
 				return addBoatBanner(player, boat, stack);
@@ -104,6 +112,47 @@ public final class ModInteractions {
 			stack.shrink(1);
 		}
 		horse.level().playSound(null, horse.blockPosition(), SoundEvents.ARMOR_EQUIP_ELYTRA.value(), SoundSource.NEUTRAL, 0.8F, 1.0F);
+		return InteractionResult.SUCCESS;
+	}
+
+	private static InteractionResult coupleMinecart(Player player, net.minecraft.world.entity.vehicle.minecart.AbstractMinecart cart, ItemStack stack) {
+		if (cart.level().isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+		AttachmentTarget playerData = (AttachmentTarget) player;
+		java.util.UUID pending = playerData.getAttached(ModAttachments.PENDING_COUPLE);
+		if (pending == null) {
+			playerData.setAttached(ModAttachments.PENDING_COUPLE, cart.getUUID());
+			cart.level().playSound(null, cart.blockPosition(), SoundEvents.CHAIN_PLACE, SoundSource.NEUTRAL, 0.8F, 1.4F);
+			return InteractionResult.SUCCESS;
+		}
+		playerData.removeAttached(ModAttachments.PENDING_COUPLE);
+		if (pending.equals(cart.getUUID())) {
+			return InteractionResult.SUCCESS;
+		}
+		// This cart follows the previously selected one.
+		((AttachmentTarget) cart).setAttached(ModAttachments.COUPLED_TO, pending);
+		if (!player.getAbilities().instabuild) {
+			stack.shrink(1);
+		}
+		cart.level().playSound(null, cart.blockPosition(), SoundEvents.CHAIN_PLACE, SoundSource.NEUTRAL, 1.0F, 1.0F);
+		return InteractionResult.SUCCESS;
+	}
+
+	private static InteractionResult addCartBanner(Player player, net.minecraft.world.entity.vehicle.minecart.AbstractMinecart cart, ItemStack stack) {
+		if (cart.level().isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+		AttachmentTarget target = (AttachmentTarget) cart;
+		ItemStack current = target.getAttachedOrElse(ModAttachments.BANNER, ItemStack.EMPTY);
+		if (!current.isEmpty()) {
+			player.getInventory().placeItemBackInInventory(current.copy());
+		}
+		target.setAttached(ModAttachments.BANNER, stack.copyWithCount(1));
+		if (!player.getAbilities().instabuild) {
+			stack.shrink(1);
+		}
+		cart.level().playSound(null, cart.blockPosition(), SoundEvents.WOOL_PLACE, SoundSource.NEUTRAL, 0.8F, 1.0F);
 		return InteractionResult.SUCCESS;
 	}
 
